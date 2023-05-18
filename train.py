@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import roc_auc_score
 import pickle
 
 df = pd.read_pickle("data_preprocessed\\preprocessed")
@@ -13,6 +14,8 @@ clf = RandomForestClassifier(n_estimators=100,
     min_samples_leaf=1,
     verbose=2)
 clf.fit(X_train, y_train)
+
+print(roc_auc_score(y_test, clf.predict(X_test)))
 
 with open('models\\clf.pickle', 'wb') as handle:
     pickle.dump(clf, handle, protocol=pickle.HIGHEST_PROTOCOL)
