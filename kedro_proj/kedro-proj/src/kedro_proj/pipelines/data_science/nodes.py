@@ -1,9 +1,11 @@
 import logging
 from typing import Dict, Tuple
+import mlflow
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import r2_score
 import pandas as pd
+from kedro_mlflow.io.metrics import MlflowMetricDataSet
 
 def split_data(data: pd.DataFrame, parameters: Dict) -> Tuple:
     y = data['booking_status_cat']
@@ -25,3 +27,5 @@ def evaluate_model(
     score = r2_score(y_test, y_pred)
     logger = logging.getLogger(__name__)
     logger.info("Model has a coefficient R^2 of %.3f on test data.", score)
+    metric_ds = MlflowMetricDataSet(key="R2")
+    metric_ds.save(score)
