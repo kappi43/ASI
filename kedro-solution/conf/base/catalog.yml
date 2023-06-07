@@ -4,7 +4,7 @@
 # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
 hotelReservations:
   type: pandas.CSVDataSet
-  filepath: HotelReservations.csv
+  filepath: datasets/HotelReservations.csv
 
 classifier:
   type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet

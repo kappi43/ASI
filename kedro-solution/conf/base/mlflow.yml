@@ -34,7 +34,7 @@ tracking:
     pipelines: []
 
   experiment:
-    name: kedro_proj
+    name: kedro-solution
     restore_if_deleted: True  # if the experiment`name` was previously deleted experiment, should we restore it?
 
   run:
