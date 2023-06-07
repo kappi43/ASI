@@ -4,9 +4,10 @@
 # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
 hotelReservations:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/HotelReservations.csv
+  filepath: HotelReservations.csv
 
 classifier:
-  type: pickle.PickleDataSet
-  filepath: data/06_models/classifier.pickle
-  versioned: true
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet
+  data_set:
+    type: pickle.PickleDataSet
+    filepath: mlflowModel.pkl
