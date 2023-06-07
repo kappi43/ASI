@@ -12,4 +12,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kedro:$(date +%s)
+      run: docker build . --file kedro-solution/Dockerfile --tag kedro:$(date +%s)
