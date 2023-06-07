@@ -2,10 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "actionsTestBranch" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "actionsTestBranch" ]
-    paths: ['datasets/**']
+    branches: [ "main" ]
 
 jobs:
   build:
