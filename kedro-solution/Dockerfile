@@ -22,5 +22,4 @@ COPY --chown=${KEDRO_UID}:${KEDRO_GID} ./kedro-solution .
 EXPOSE 5000
 EXPOSE 8080
 
-RUN kedro run
 CMD kedro mlflow ui
