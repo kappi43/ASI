@@ -14,13 +14,13 @@ useradd -m -d /home/kedro_docker -s /bin/bash -g ${KEDRO_GID} -u ${KEDRO_UID} ke
 WORKDIR /home/kedro_docker
 USER kedro_docker
 
-FROM runtime-environment
-
 # copy the whole project except what is in .dockerignore
 ARG KEDRO_UID=999
 ARG KEDRO_GID=0
-COPY --chown=${KEDRO_UID}:${KEDRO_GID} . .
+COPY --chown=${KEDRO_UID}:${KEDRO_GID} ./kedro-solution .
 
-EXPOSE 8888
+EXPOSE 5000
+EXPOSE 8080
 
-CMD ["kedro", "run"]
+RUN kedro run
+CMD kedro mlflow ui
