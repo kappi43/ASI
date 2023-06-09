@@ -1,8 +1,9 @@
 ##########################
 # Kedro PROJECT
 
-# ignore Dockerfile and .dockerignore
-Dockerfile
+# ignore Dockerfile-mlflow and .dockerignore
+Dockerfile-mlflow
+Dockerfile-kedro-viz
 .dockerignore
 
 # ignore potentially sensitive credentials files

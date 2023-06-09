@@ -11,10 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Publish to Registry
+    - name: Publish mlflow image to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
-        name: kappi43/asi:Test
+        name: kappi43/asi-mlflow:test
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: kedro-solution/Dockerfile
+        dockerfile: kedro-solution/Dockerfile-mlflow
+    - name: Publish kedro viz image to Registry
+      uses: elgohr/Publish-Docker-Github-Action@v5
+      with:
+        name: kappi43/asi-kedro-viz:test
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: kedro-solution/Dockerfile-kedro-viz
