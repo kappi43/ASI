@@ -17,7 +17,7 @@ USER kedro_docker
 # copy the whole project except what is in .dockerignore
 ARG KEDRO_UID=999
 ARG KEDRO_GID=0
-COPY --chown=${KEDRO_UID}:${KEDRO_GID} ./webapp .
+COPY --chown=${KEDRO_UID}:${KEDRO_GID} ./webapp/src .
 
 ENV MODEL_NAME="mlflowModel.pkl"
 
