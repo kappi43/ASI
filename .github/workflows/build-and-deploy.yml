@@ -14,7 +14,8 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    - run: |
+    - name: Build Artifacts
+      run: |
         cd kedro-solution/src
         pip install -r requirements.txt
         cd ..
@@ -40,3 +41,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: kedro-solution/Dockerfile-kedro-viz
+    - name: Publish web app image to Registry
+      uses: elgohr/Publish-Docker-Github-Action@v5
+      with:
+        name: kappi43/asi-webapp:test
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: webapp/Dockerfile
