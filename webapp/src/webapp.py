@@ -3,8 +3,7 @@ import os
 from flask import Flask, render_template, request, url_for, redirect
 import pickle
 
-model_name = 'mlflowModel.pkl'
-#model_name = os.environ['MODEL_NAME']
+model_name = os.environ['MODEL_NAME']
 model = pickle.load(open(model_name, 'rb'))
 app = Flask(__name__)
 
