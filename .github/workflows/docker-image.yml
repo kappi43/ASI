@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - run: |
+        cd kedro-solution/src
+        pip install -r requirements.txt
+        cd ..
+        kedro run
     - name: Publish mlflow image to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
