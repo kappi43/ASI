@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Artifacts CI
 
 on:
   push:
@@ -19,6 +19,13 @@ jobs:
         pip install -r requirements.txt
         cd ..
         kedro run
+        cp mlflowModel.pkl ../webapp/src/mlflowModel.pkl
+    - name: Commit artifacts
+      run: |
+        git config --global user.name 'BuildBot_Baggins'
+        git config --global user.email 'buildbot@users.noreply.github.com'
+        git commit -am "Automated artifact commit"
+        git push
     - name: Publish mlflow image to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
       with:
