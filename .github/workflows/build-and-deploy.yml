@@ -48,3 +48,25 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: webapp/Dockerfile
+#    - name: Google Auth
+#      uses: google-github-actions/auth@v1
+#      with:
+#        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+#    - name: Cloud deploy mlflow
+#      uses: google-github-actions/deploy-cloudrun@v1
+#      with:
+#        service: asi-mlflow
+#        region: europe-west1
+#        image: asi-mlflow:test
+#    - name: Cloud deploy kedro-viz
+#      uses: google-github-actions/deploy-cloudrun@v1
+#      with:
+#        service: asi-kedro-viz
+#        region: europe-west1
+#        image: asi-kedro-viz:test
+#    - name: Cloud deploy webapp
+#      uses: google-github-actions/deploy-cloudrun@v1
+#      with:
+#        service: asi-webapp
+#        region: europe-west1
+#        image: asi-webapp:test
