@@ -6,7 +6,7 @@ import pickle
 model_name = os.environ['MODEL_NAME']
 model = pickle.load(open(model_name, 'rb'))
 app = Flask(__name__)
-
+#test
 @app.route('/', methods=['GET', 'POST'])
 def index():
     params = None
