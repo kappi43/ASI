@@ -58,16 +58,16 @@ jobs:
 #      with:
 #        service: asi-mlflow
 #        region: europe-west1
-#        image: asi-mlflow:test
+#        image: kappi43/asi-mlflow:test
 #    - name: Cloud deploy kedro-viz
 #      uses: google-github-actions/deploy-cloudrun@v1
 #      with:
 #        service: asi-kedro-viz
 #        region: europe-west1
-#        image: asi-kedro-viz:test
+#        image: kappi43/asi-kedro-viz:test
 #    - name: Cloud deploy webapp
 #      uses: google-github-actions/deploy-cloudrun@v1
 #      with:
 #        service: asi-webapp
 #        region: europe-west1
-#        image: asi-webapp:test
+#        image: kappi43/asi-webapp:test
