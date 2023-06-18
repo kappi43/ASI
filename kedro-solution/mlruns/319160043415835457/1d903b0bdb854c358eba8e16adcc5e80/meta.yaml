@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/ASI/ASI/kedro-solution/mlruns/319160043415835457/1d903b0bdb854c358eba8e16adcc5e80/artifacts
+end_time: 1687106870424
+entry_point_name: ''
+experiment_id: '319160043415835457'
+lifecycle_stage: active
+run_id: 1d903b0bdb854c358eba8e16adcc5e80
+run_name: __default__
+run_uuid: 1d903b0bdb854c358eba8e16adcc5e80
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1687106867852
+status: 3
+tags: []
+user_id: runner
