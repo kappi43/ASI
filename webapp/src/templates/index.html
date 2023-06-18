@@ -9,29 +9,133 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hotel Reservation Predictor</title>
+    <title>Hotel Reservations Predictor</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="{{ url_for('index')}}">FlaskBlog</a>
+    <a class="navbar-brand" href="{{ url_for('index')}}">Hotel Reservations Predictor</a>
 </nav>
 <div class="container">
     <form method="post">
-        <div class="form-group">
-            <label for="param">param</label>
-            <textarea name="param" id="param"
-                      class="form-control">{{ request.form['param'] or params['param'] }}</textarea>
-
-            <label for="param2">param2</label>
-            <textarea name="param2" id="param2"
-                      class="form-control">{{ request.form['param2'] or params['param2'] }}</textarea>
+        <div class="row">
+            <div class="col-sm">
+                <label for="adults">Adults</label>
+                <input type="number" class="form-control" value="{{ params.adults }}" id="adults" name="adults" required
+                       min="0"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="children">Children</label>
+                <input type="number" class="form-control" value="{{ params.children }}" id="children" name="children"
+                       required min="0"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="wknd_nights">Weekend nights</label>
+                <input type="number" class="form-control" value="{{ params.wknd_nights }}" id="wknd_nights"
+                       name="wknd_nights" required min="0"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="wk_nights">Week nights</label>
+                <input type="number" class="form-control" value="{{ params.wk_nights }}" id="wk_nights" name="wk_nights"
+                       required min="0"
+                       placeholder="0"/>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="param3">param3</label>
-            <textarea name="param3" id="param3"
-                      class="form-control">{{ request.form['param3'] or params['param3'] }}</textarea>
+        <div class="row">
+            <div class="col-sm">
+                <label for="booking_date">Booking date</label>
+                <input type="date" class="form-control" value="{{ params.booking_date }}" id="booking_date" required
+                       name="booking_date"/>
+            </div>
+            <div class="col-sm">
+                <label for="arrival_date">Arrival date</label>
+                <input type="date" class="form-control" value="{{ params.arrival_date }}" id="arrival_date" required
+                       name="arrival_date"/>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="row">
+            <div class="col-sm">
+                <label for="repeated">Repeated Guest?</label>
+                <input type="checkbox" class="form-control" id="repeated" name="repeated" {% if params and
+                       params.repeated %}checked{% endif %}/>
+            </div>
+            <div class="col-sm">
+                <label for="parking">Car Parking?</label>
+                <input type="checkbox" class="form-control" id="parking" name="parking" {% if params and params.parking
+                       %}checked{% endif %}/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="prev_cancel">Previous cancellations</label>
+                <input type="number" class="form-control" value="{{ params.prev_cancel }}" id="prev_cancel" required
+                       min="0"
+                       name="prev_cancel"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="not_cancelled">Not cancelled bookings</label>
+                <input type="number" class="form-control" value="{{ params.not_cancelled }}" id="not_cancelled" required
+                       min="0"
+                       name="not_cancelled"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="spec_req">Special requests number</label>
+                <input type="number" class="form-control" value="{{ params.spec_req }}" id="spec_req" name="spec_req"
+                       required min="0"
+                       placeholder="0"/>
+            </div>
+            <div class="col-sm">
+                <label for="avg_room_price">Average room price</label>
+                <input type="number" class="form-control" value="{{ params.avg_room_price }}" id="avg_room_price"
+                       required min="0"
+                       name="avg_room_price"
+                       placeholder="0"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="mealplan">Meal plan</label>
+                <input list="mealplans" class="form-control" value="{{ params.mealplan }}" id="mealplan" required
+                       name="mealplan"/>
+                <datalist id="mealplans">
+                    <option value="Meal plan 1">
+                    <option value="Meal plan 2">
+                    <option value="Meal plan 3">
+                    <option value="Not selected">
+                </datalist>
+            </div>
+            <div class="col-sm">
+                <label for="room_type">Room type</label>
+                <input list="room_types" class="form-control" value="{{ params.room_type }}" id="room_type" required
+                       name="room_type"/>
+                <datalist id="room_types">
+                    <option value="Room type 1">
+                    <option value="Room type 2">
+                    <option value="Room type 3">
+                    <option value="Room type 4">
+                    <option value="Room type 5">
+                    <option value="Room type 6">
+                    <option value="Room type 7">
+                </datalist>
+            </div>
+            <div class="col-sm">
+                <label for="mkt_seg">Market Segment</label>
+                <input list="mkt_segs" class="form-control" value="{{ params.mkt_seg }}" id="mkt_seg" name="mkt_seg"
+                       required/>
+                <datalist id="mkt_segs">
+                    <option value="Aviation">
+                    <option value="Complementary">
+                    <option value="Corporate">
+                    <option value="Offline">
+                    <option value="Online">
+                </datalist>
+            </div>
+        </div>
+        <div class="pt-4 form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
